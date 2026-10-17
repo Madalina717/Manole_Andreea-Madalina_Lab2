@@ -344,3 +344,4 @@ D:\Mada\Manole_Andreea-Madalina_Lab2\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis
 D:\Mada\Manole_Andreea-Madalina_Lab2\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 D:\Mada\Manole_Andreea-Madalina_Lab2\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
 D:\Mada\Manole_Andreea-Madalina_Lab2\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+D:\Mada\Manole_Andreea-Madalina_Lab2\obj\Debug\net10.0\Manole_Andreea-Madalina_Lab2.sourcelink.json
