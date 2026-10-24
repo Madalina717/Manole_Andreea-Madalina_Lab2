@@ -27,7 +27,8 @@ namespace Manole_Andreea_Madalina_Lab2.Pages.BookPages
 
             Book = await _context.Book
                 .Include(b => b.Publisher)
-                .Include(b => b.BookCategories).ThenInclude(b => b.Category)
+                .Include(b => b.BookCategories)
+                .ThenInclude(b => b.Category)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
 
