@@ -2,26 +2,43 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Manole_Andreea_Madalina_Lab2.Models;
+using Manole_Andreea_Madalina_Lab2;
 
-namespace Manole_Andreea_Madalina_Lab2.Pages.BookPages;
-
-public class IndexModel : PageModel
+namespace Manole_Andreea_Madalina_Lab2.Pages.BookPages
 {
-    private readonly Manole_Andreea_Madalina_Lab2Context _context;
-
-    public IndexModel(Manole_Andreea_Madalina_Lab2Context context)
+    public class IndexModel : PageModel
     {
-        _context = context;
-    }
+        private readonly Manole_Andreea_Madalina_Lab2Context _context;
 
-    public IList<Book> Book { get; set; } = default!;
+        public IndexModel(Manole_Andreea_Madalina_Lab2Context context)
+        {
+            _context = context;
+        }
 
-    public async Task OnGetAsync()
-    {
-        Book = await _context.Book
-        .Include(b => b.Author)
-        .Include(b => b.Publisher)
-        .ToListAsync();
+        public IList<Book> Book { get; set; } = default!;
+        public BookData BookD { get; set; } = default!;
+        public int BookID { get; set; }
+        public int CategoryID { get; set; }
 
+        public async Task OnGetAsync(int? id, int? categoryID)
+        {
+            BookD = new BookData();
+            BookD.Books = await _context.Book
+                .Include(b => b.Author)
+                .Include(b => b.Publisher)
+                .Include(b => b.BookCategories)
+                .ThenInclude(b => b.Category)
+                .AsNoTracking()
+                .OrderBy(b => b.Title)
+                .ToListAsync();
+
+            if (id != null)
+            {
+                BookID = id.Value;
+                Book book = BookD.Books
+                    .Where(i => i.ID == id.Value).Single();
+                BookD.Categories = book.BookCategories.Select(s => s.Category);
+            }
+        }
     }
 }
