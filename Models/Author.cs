@@ -11,7 +11,8 @@ namespace Manole_Andreea_Madalina_Lab2.Models
 
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
-        [Display(Name = "Author")]
+
+        [Display(Name = "Full Name")]
         public string FullName
         {
             get { return FirstName + " " + LastName; }

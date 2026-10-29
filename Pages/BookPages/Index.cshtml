@@ -11,14 +11,29 @@
     <a asp-page="Create">Create New</a>
 </p>
 
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by Book Title / Author Name:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.BookD.Books.First().Title)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.TitleSort">
+                    @Html.DisplayNameFor(model => model.BookD.Books.First().Title)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BookD.Books.First().Author)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.AuthorSort">
+                    @Html.DisplayNameFor(model => model.BookD.Books.First().Author)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.BookD.Books.First().Price)
@@ -36,7 +51,8 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.BookD.Books) {
+        @foreach (var item in Model.BookD.Books)
+        {
             string selectedRow = "";
             if (item.ID == Model.BookID)
             {
@@ -62,7 +78,8 @@
                     @{
                         foreach (var category in item.BookCategories)
                         {
-                            @category.Category.ID @: @category.Category.CategoryName <br />
+                            @category.Category.ID
+                            @: @category.Category.CategoryName <br />
                         }
                     }
                 </td>

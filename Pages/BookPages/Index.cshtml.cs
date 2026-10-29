@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Manole_Andreea_Madalina_Lab2.Models;
-using Manole_Andreea_Madalina_Lab2;
+
 
 namespace Manole_Andreea_Madalina_Lab2.Pages.BookPages
 {
@@ -19,18 +19,33 @@ namespace Manole_Andreea_Madalina_Lab2.Pages.BookPages
         public BookData BookD { get; set; } = default!;
         public int BookID { get; set; }
         public int CategoryID { get; set; }
+        public string TitleSort { get; set; }
+        public string AuthorSort { get; set; }
+        public string CurrentFilter { get; set; }
 
-        public async Task OnGetAsync(int? id, int? categoryID)
+        public async Task OnGetAsync(int? id, int? categoryID, string sortOrder, string searchString)
         {
             BookD = new BookData();
-            BookD.Books = await _context.Book
-                .Include(b => b.Author)
-                .Include(b => b.Publisher)
-                .Include(b => b.BookCategories)
-                .ThenInclude(b => b.Category)
-                .AsNoTracking()
-                .OrderBy(b => b.Title)
-                .ToListAsync();
+            TitleSort = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            AuthorSort = sortOrder == "author" ? "author_desc" : "author";
+            CurrentFilter = searchString;
+
+            var booksIQ = from b in _context.Book
+                          .Include(b => b.Author)
+                          .Include(b => b.Publisher)
+                          .Include(b => b.BookCategories)
+                          .ThenInclude(b => b.Category)
+                          .AsNoTracking()
+                          select b;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                booksIQ = booksIQ.Where(s => s.Author.FirstName.Contains(searchString)
+                                          || s.Author.LastName.Contains(searchString)
+                                          || s.Title.Contains(searchString));
+            }
+
+            BookD.Books = await booksIQ.OrderBy(b => b.Title).ToListAsync();
 
             if (id != null)
             {
@@ -38,6 +53,22 @@ namespace Manole_Andreea_Madalina_Lab2.Pages.BookPages
                 Book book = BookD.Books
                     .Where(i => i.ID == id.Value).Single();
                 BookD.Categories = book.BookCategories.Select(s => s.Category);
+            }
+
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    BookD.Books = BookD.Books.OrderByDescending(s => s.Title).ToList();
+                    break;
+                case "author_desc":
+                    BookD.Books = BookD.Books.OrderByDescending(s => s.Author.FullName).ToList();
+                    break;
+                case "author":
+                    BookD.Books = BookD.Books.OrderBy(s => s.Author.FullName).ToList();
+                    break;
+                default:
+                    BookD.Books = BookD.Books.OrderBy(s => s.Title).ToList();
+                    break;
             }
         }
     }
