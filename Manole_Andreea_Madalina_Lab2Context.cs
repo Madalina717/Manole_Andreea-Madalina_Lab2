@@ -7,4 +7,6 @@ public class Manole_Andreea_Madalina_Lab2Context(DbContextOptions<Manole_Andreea
     public DbSet<Manole_Andreea_Madalina_Lab2.Models.Author> Author { get; set; } = default!;
     public DbSet<Manole_Andreea_Madalina_Lab2.Models.Category> Category { get; set; } = default!;
     public DbSet<Manole_Andreea_Madalina_Lab2.Models.BookCategory> BookCategory { get; set; } = default!;
+    public DbSet<Manole_Andreea_Madalina_Lab2.Models.Member> Member { get; set; }
+    public DbSet<Manole_Andreea_Madalina_Lab2.Models.Borrowing> Borrowing { get; set; }
 }
