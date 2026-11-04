@@ -11,34 +11,24 @@
     <h4>Borrowing</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Borrowing.MemberID)
+        <dt class="col-sm-2">
+            Member
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Borrowing.MemberID)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Borrowing.Member.FullName)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Borrowing.Member)
+
+        <dt class="col-sm-2">
+            Book Title
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Borrowing.Member)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Borrowing.Book.Title)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Borrowing.BookID)
+
+        <dt class="col-sm-2">
+            Return Date
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Borrowing.BookID)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Borrowing.Book)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Borrowing.Book)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Borrowing.ReturnDate)
-        </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Borrowing.ReturnDate)
         </dd>
     </dl>

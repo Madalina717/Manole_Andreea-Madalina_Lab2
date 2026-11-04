@@ -24,7 +24,13 @@ public class DeleteModel : PageModel
             return NotFound();
         }
 
-        var borrowing = await _context.Borrowing.FirstOrDefaultAsync(m => m.ID == id);
+        // La fel ca la Details, aducem datele relaționate pentru a le putea afișa înainte de ștergere
+        var borrowing = await _context.Borrowing
+            .Include(b => b.Book)
+                .ThenInclude(b => b.Author)
+            .Include(b => b.Member)
+            .FirstOrDefaultAsync(m => m.ID == id);
+
         if (borrowing is null)
         {
             return NotFound();

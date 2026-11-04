@@ -61,8 +61,8 @@ wwwroot\lib\jquery\dist\jquery.slim.js
 wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
-D:\Mada\Manole_Andreea-Madalina_Lab2\wwwroot\css\site.css
 D:\Mada\Manole_Andreea-Madalina_Lab2\wwwroot\favicon.ico
+D:\Mada\Manole_Andreea-Madalina_Lab2\wwwroot\css\site.css
 D:\Mada\Manole_Andreea-Madalina_Lab2\wwwroot\js\site.js
 D:\Mada\Manole_Andreea-Madalina_Lab2\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 D:\Mada\Manole_Andreea-Madalina_Lab2\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
