@@ -32,6 +32,9 @@ builder.Services.AddRazorPages(options =>
     options.Conventions.AllowAnonymousToPage("/BookPages/Details");
 
     options.Conventions.AuthorizeFolder("/MemberPages", "AdminPolicy");
+
+    options.Conventions.AuthorizeFolder("/Publishers", "AdminPolicy");
+    options.Conventions.AuthorizeFolder("/CategoryPages", "AdminPolicy");
 });
 
 var app = builder.Build();

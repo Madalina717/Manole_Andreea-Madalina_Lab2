@@ -7,6 +7,8 @@ namespace Manole_Andreea_Madalina_Lab2.Models
     {
         public int ID { get; set; }
 
+        [Required(ErrorMessage = "Titlul cartii este obligatoriu.")]
+        [StringLength(150, MinimumLength = 3, ErrorMessage = "Titlul trebuie sa aiba intre 3 si 150 de caractere.")]
         [Display(Name = "Book Title")]
         public string Title { get; set; }
         //public string Author { get; set; }
