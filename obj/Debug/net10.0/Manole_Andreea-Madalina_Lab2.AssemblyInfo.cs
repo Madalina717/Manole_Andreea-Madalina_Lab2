@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Manole_Andreea-Madalina_Lab2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+edda1c83fc81b5739b295389cda4f628ba6fd97f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+48ea7ddd090f6d1cfc2c7788c3bab99edfa4ac2b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Manole_Andreea-Madalina_Lab2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Manole_Andreea-Madalina_Lab2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

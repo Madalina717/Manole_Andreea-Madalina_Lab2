@@ -1,4 +1,6 @@
 using Manole_Andreea_Madalina_Lab2.Models;
+using Microsoft.AspNetCore.Authorization;
+
 //using Manole_Andreea_Madalina_Lab2;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -7,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Manole_Andreea_Madalina_Lab2.Pages.BookPages
 {
+    [Authorize(Roles = "Admin")]
     public class CreateModel : BookCategoriesPageModel
     {
         private readonly Manole_Andreea_Madalina_Lab2Context _context;
